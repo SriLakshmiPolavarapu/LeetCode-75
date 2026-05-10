@@ -1,0 +1,28 @@
+class Solution {
+    public String reverseWords(String s) {
+        
+        String[] s1 = s.trim().split("\\s+");
+        Stack<String> stack = new Stack<>();
+
+        for(int i=0;i<s1.length;i++)
+        {
+            stack.push(s1[i]);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        while(!stack.isEmpty()) # this loops know when to stop
+        {
+            sb.append(stack.pop());
+
+            if(!stack.isEmpty()) # this loop will control formatting, adding spaces
+            {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
+
+    }
+}
+
+# s.trim().split("\\s+") ===> input = "hello world"
+# output = ["hello", "world"]
