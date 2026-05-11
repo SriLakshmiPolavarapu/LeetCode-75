@@ -1,0 +1,26 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        
+        // left to right
+        int[] res = new int[nums.length];
+        res[0] = 1;
+        for(int i=1;i<=nums.length-1;i++)
+        {
+            res[i] = nums[i-1] * res[i-1];
+        }
+
+        // right ot left
+        int right = 1;
+        for(int i=nums.length-1;i>=0;i--)
+        {
+            res[i] = res[i] * right;
+            right = right * nums[i];
+        }
+        return res;
+
+    }
+}
+
+# prefix ==> left to right
+# postfix ===> right to left
+    # right means the product of all numbers I have already seen while walking from right to left, so before the last element we don't see any that's why right =1
